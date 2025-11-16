@@ -33,7 +33,7 @@ A modern task management application built with Flutter that connects service pr
 
 ## 📱 Screenshots
 
-<div style="display: flex; flex-wrap: wrap; gap: 20px;">
+<div style="display: flex; flex-wrap: wrap; gap: 30px;">
 
   <img src="https://github.com/user-attachments/assets/3db1f61f-f73b-4129-9b8e-bd832caaa1a6" width="250" height="1200"/>
   <img src="https://github.com/user-attachments/assets/86fef8da-f41c-4e9a-b122-ddf55ab7c010" width="250"/>
