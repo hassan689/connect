@@ -15,7 +15,11 @@ jobs:
 
     - uses: subosito/flutter-action@v2
       with:
-        flutter-version: '3.22.0'   # Dart 3.7 included
+        flutter-version: '3.22.0'   # includes Dart 3.7.x
+        cache: false               # force download new version
+
+    - name: Clean Flutter cache
+      run: flutter clean && flutter pub cache clean
 
     - name: Install dependencies
       run: flutter pub get
