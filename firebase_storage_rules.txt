@@ -1,0 +1,41 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // Profile images - allow authenticated users to upload their own images
+    match /profile_images/{userId}/{allPaths=**} {
+      allow read: if true; // Anyone can view profile images
+      allow write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Portfolio images - allow authenticated users to upload
+    match /portfolio_images/{allPaths=**} {
+      allow read: if true; // Anyone can view portfolio images
+      allow write: if request.auth != null;
+    }
+    
+    // Task images - allow authenticated users to upload
+    match /task_images/{allPaths=**} {
+      allow read: if true; // Anyone can view task images
+      allow write: if request.auth != null;
+    }
+    
+    // Task completion images - allow authenticated users to upload
+    match /task_completions/{allPaths=**} {
+      allow read: if true; // Anyone can view completion images
+      allow write: if request.auth != null;
+    }
+    
+    // General images folder - allow authenticated users to upload
+    match /images/{allPaths=**} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    
+    // Default rule - deny all other access
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+} 
