@@ -1,47 +1,77 @@
-# Linkster - Task Management App
+# Connect - Task Management App
 
-[![CI/CD Pipeline](https://github.com/your-username/linkster/actions/workflows/ci.yml/badge.svg)](https://github.com/your-username/linkster/actions/workflows/ci.yml)
+[![CI/CD Pipeline](https://github.com/hassan689/connect-open-source/actions/workflows/ci.yml/badge.svg)](https://github.com/hassan689/connect-open-source/actions/workflows/ci.yml)
 [![Flutter Version](https://img.shields.io/badge/Flutter-3.16.0-blue.svg)](https://flutter.dev/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-A modern task management application built with Flutter that connects service providers with clients. Linkster makes it easy to find help for tasks or offer your services to others.
+A modern task management application built with Flutter that connects service providers with clients. Connect makes it easy to find help for tasks or offer your services to others.
 
 ## 🚀 Features
 
 ### For Task Seekers
 - **Browse Tasks**: Find available tasks in your area
-- **Map View**: Interactive map showing task locations
+- **Map View**: Interactive map showing task locations with distance and pricing
 - **Search & Filter**: Find specific types of tasks
 - **Real-time Messaging**: Communicate with task posters
 - **Secure Payments**: Safe and protected transactions
+- **AI Assistant**: Get help from Dino, your AI guide
 
 ### For Task Posters
-- **Post Tasks**: Create and publish new tasks
+- **Post Tasks**: Create and publish new tasks with detailed requirements
 - **Manage Tasks**: Edit, cancel, or mark tasks complete
 - **Track Progress**: Monitor task status and completion
 - **Rate Providers**: Leave feedback after completion
+- **Schedule Tasks**: Set specific dates and times for task completion
 
 ### Core Features
-- **Location-based Discovery**: Find tasks near you
+- **Location-based Discovery**: Find tasks near you with interactive maps
 - **User Verification**: Secure and verified user accounts
 - **Real-time Updates**: Live task and message updates
 - **Push Notifications**: Stay informed about new activities
 - **Multi-platform**: Works on Android, iOS, and Web
+- **AI-Powered Assistance**: Get help navigating the app with Dino
 
 ## 📱 Screenshots
 
-[Add screenshots here]
+### Welcome & Onboarding
+![Onboarding Screen](docs/screenshots/onboarding.png)
+*Welcome screen with Connect branding and social login options*
+
+### Authentication
+![Login Screen](docs/screenshots/login.png)
+*Clean and modern login interface with Dino mascot*
+
+### Main Dashboard
+![Main Screen](docs/screenshots/main-screen.png)
+*Home screen showing task categories, filters, and quick access to post tasks*
+
+### Task Posting - Location Selection
+![Location Selection](docs/screenshots/location-selection.png)
+*Interactive map for selecting task location with search functionality*
+
+### Task Posting - Scheduling
+![Task Scheduling](docs/screenshots/task-scheduling.png)
+*Schedule your tasks with flexible date and time options*
+
+### Map View
+![Map View](docs/screenshots/map-view.png)
+*Interactive map showing available tasks with pricing and distance*
+
+### AI Assistant - Dino
+![AI Assistant](docs/screenshots/ai-assistant.png)
+*Chat with Dino, your AI guide for navigating the Connect app*
 
 ## 🛠️ Technology Stack
 
 - **Frontend**: Flutter 3.16.0
 - **Backend**: Firebase
-- **Authentication**: Firebase Auth
+- **Authentication**: Firebase Auth (Email, Google, Apple Sign-In)
 - **Database**: Cloud Firestore
 - **Storage**: Firebase Storage
 - **Maps**: Google Maps Flutter
-- **Payments**: JazzCash
+- **Payments**: Stripe Integration
 - **Notifications**: Firebase Cloud Messaging
+- **AI Integration**: OpenAI & Hugging Face
 
 ## 📋 Prerequisites
 
@@ -58,8 +88,8 @@ Before running this project, make sure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/linkster.git
-cd linkster
+git clone https://github.com/hassan689/connect-open-source.git
+cd connect-open-source
 ```
 
 ### 2. Install Dependencies
@@ -142,18 +172,18 @@ lib/
 │   ├── constants/          # App constants
 │   ├── utils/              # Utility functions
 │   ├── services/           # Core services
-│   └── widgets/            # Reusable components
-├── features/               # Feature modules
-│   ├── auth/              # Authentication
-│   ├── tasks/             # Task management
-│   ├── messaging/         # Messaging system
-│   ├── payments/          # Payment processing
-│   └── notifications/     # Push notifications
-├── shared/                # Shared components
-│   ├── widgets/           # Shared UI widgets
-│   ├── models/            # Data models
-│   └── services/          # Shared services
-└── main.dart              # App entry point
+│   └── theme/              # App theme
+├── ai_agent/               # AI assistant (Dino)
+├── ai_services/            # AI service integrations
+├── auth/                   # Authentication screens
+├── connects/               # User connection features
+├── dashboard/              # Analytics dashboard
+├── messaging/              # Messaging system
+├── profilepage/             # User profile management
+├── search_tasks/            # Task browsing and search
+├── task_post/               # Task creation flow
+├── widgets/                 # Reusable components
+└── main.dart                # App entry point
 ```
 
 ## 🧪 Testing
@@ -168,7 +198,7 @@ flutter test
 flutter test --coverage
 
 # Run specific test file
-flutter test test/unit/auth_test.dart
+flutter test test/widget_test.dart
 ```
 
 ## 🏗️ Building
@@ -208,10 +238,11 @@ flutter build web --release
 
 ## 📚 Documentation
 
-- [Architecture Guide](docs/architecture/README.md)
-- [User Guide](docs/user-guide/README.md)
-- [API Documentation](docs/api/README.md)
-- [Deployment Guide](docs/deployment/README.md)
+- [Security Guidelines](SECURITY.md)
+- [Contributing Guide](CONTRIBUTING.md)
+- [Code of Conduct](CODE_OF_CONDUCT.md)
+- [API Keys Security](API_KEYS_SECURITY.md)
+- [Firebase Web Setup](FIREBASE_WEB_SETUP.md)
 
 ## 🤝 Contributing
 
@@ -238,32 +269,34 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 If you need help or have questions:
 
 - **Documentation**: Check our [docs](docs/) folder
-- **Issues**: Create an issue on [GitHub](https://github.com/your-username/linkster/issues)
-- **Email**: support@linkster.com
-- **Community**: Join our [Discord](https://discord.gg/linkster) server
+- **Issues**: Create an issue on [GitHub](https://github.com/hassan689/connect-open-source/issues)
+- **Security**: Report security issues via [SECURITY.md](SECURITY.md)
 
 ## 🙏 Acknowledgments
 
 - [Flutter Team](https://flutter.dev/) for the amazing framework
 - [Firebase](https://firebase.google.com/) for backend services
 - [Google Maps](https://developers.google.com/maps) for mapping services
-- [JazzCash](https://www.jazzcash.com.pk/) for payment processing
+- [OpenAI](https://openai.com/) for AI capabilities
+- [Hugging Face](https://huggingface.co/) for AI models
 - All our contributors and users
 
 ## 📊 Project Status
 
 - ✅ Core functionality implemented
-- ✅ Authentication system
+- ✅ Authentication system (Email, Google, Apple)
 - ✅ Task management
 - ✅ Messaging system
 - ✅ Payment integration
 - ✅ Map integration
-- 🔄 Push notifications (in progress)
+- ✅ AI Assistant (Dino)
+- ✅ Push notifications
+- ✅ Multi-language support (English, Urdu)
 - 🔄 Offline support (planned)
-- 🔄 Multi-language support (planned)
+- 🔄 Advanced analytics (planned)
 
 ---
 
-**Made with ❤️ by the Linkster Team**
+**Made with ❤️ by the Connect Team**
 
-[Website](https://linkster.com) | [Twitter](https://twitter.com/linkster) | [LinkedIn](https://linkedin.com/company/linkster)
+[GitHub Repository](https://github.com/hassan689/connect-open-source) | [Report Issue](https://github.com/hassan689/connect-open-source/issues)
