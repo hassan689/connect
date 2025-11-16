@@ -5,7 +5,9 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 A modern task management application built with Flutter that connects service providers with clients. Connect makes it easy to find help for tasks or offer your services to others.
-
+<img width="1920" height="864" alt="Screenshot (134)" src="https://github.com/user-attachments/assets/1a437441-fd42-41a9-8d2c-9d94ed3c384e" />
+*demo* 
+https://connect-app-landing.netlify.app/
 ## 🚀 Features
 
 ### For Task Seekers
