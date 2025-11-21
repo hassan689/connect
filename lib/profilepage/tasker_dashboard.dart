@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:linkster/examples/chart_navigation.dart';
 import 'package:linkster/ai_services/ai_demo_screen.dart';
 
 class TaskerDashboardScreen extends StatefulWidget {
@@ -651,10 +650,7 @@ class _TaskerDashboardScreenState extends State<TaskerDashboardScreen> {
           icon: Icons.analytics,
           title: 'Analytics & Charts',
           subtitle: 'View charts and insights',
-          onTap: () => Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const ChartNavigationScreen()),
-          ),
+          onTap: () => _viewAnalytics(),
         ),
         _actionCard(
           icon: Icons.psychology,

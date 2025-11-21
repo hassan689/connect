@@ -448,7 +448,7 @@ class _LoginPageState extends State<LoginPage> {
                 try {
                   await user.sendEmailVerification(
                     ActionCodeSettings(
-                      url: 'https://linkster-ad331.firebaseapp.com/__/auth/action',
+                      url: 'https://YOUR_PROJECT_ID.firebaseapp.com/__/auth/action',
                       handleCodeInApp: true,
                       androidPackageName: 'com.example.linkster',
                       androidInstallApp: true,

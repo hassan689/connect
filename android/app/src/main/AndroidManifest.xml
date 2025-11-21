@@ -53,7 +53,7 @@
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
-                <data android:scheme="https" android:host="linkster-ad331.firebaseapp.com" android:pathPrefix="/__/auth/handler"/>
+                <data android:scheme="https" android:host="YOUR_PROJECT_ID.firebaseapp.com" android:pathPrefix="/__/auth/handler"/>
             </intent-filter>
         </activity>
 

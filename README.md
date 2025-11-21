@@ -227,8 +227,6 @@ flutter build web --release
 - [Security Guidelines](SECURITY.md)
 - [Contributing Guide](CONTRIBUTING.md)
 - [Code of Conduct](CODE_OF_CONDUCT.md)
-- [API Keys Security](API_KEYS_SECURITY.md)
-- [Firebase Web Setup](FIREBASE_WEB_SETUP.md)
 
 ## 🤝 Contributing
 

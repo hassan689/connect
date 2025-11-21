@@ -328,7 +328,7 @@ class _MenuPageState extends State<MenuPage> with AutomaticKeepAliveClientMixin 
       // If it's an index error, show a helpful message
       if (e.toString().contains('FAILED_PRECONDITION') && e.toString().contains('index')) {
         print('⚠️ Firestore index missing. Please create the required index.');
-        print('🔗 Index creation link: https://console.firebase.google.com/v1/r/project/linkster-ad331/firestore/indexes?create_composite=Ckxwcm9qZWN0cy9saW5rc3Rlci1hZDMzMS9kYXRhYmFzZXMvKGRlZmF1bHQpL2NvbGxlY3Rpb25Hcm91cHMvdGFza3MvaW5kZXhlcy9fEAEaCgoGc3RhdHVzEAEaDQoJY3JlYXRlZEF0EAIaDAoIX19uYW1lX18QAg');
+        print('🔗 Index creation link: https://console.firebase.google.com/v1/r/project/YOUR_PROJECT_ID/firestore/indexes?create_composite=YOUR_COMPOSITE_INDEX_CONFIG');
       }
       
       setState(() {

@@ -388,7 +388,7 @@ class _IntroScreenState extends State<IntroScreen> {
         if (e.toString().contains("ClientID not set") || e.toString().contains("appClientId")) {
           errorMessage += "Google Sign-In Client ID not configured for web.\n\n"
               "To fix: Add your Google OAuth Client ID to web/index.html\n"
-              "See FIREBASE_WEB_SETUP.md for instructions";
+              "See README.md for setup instructions";
         } else {
           errorMessage += e.toString();
         }
