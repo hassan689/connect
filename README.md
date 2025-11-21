@@ -108,8 +108,6 @@ flutter pub get
    - Android: `android/app/google-services.json`
    - iOS: `ios/Runner/GoogleService-Info.plist`
 
-**⚠️ Important:** The `firebase_options.dart` file contains your Firebase API keys and should NOT be committed to version control. It's already in `.gitignore`.
-
 ### 4. Environment Variables Setup
 
 1. Copy the environment template:
@@ -128,8 +126,6 @@ flutter pub get
    # Hugging Face (for AI features)
    HUGGINGFACE_API_TOKEN=your_huggingface_token_here
    ```
-
-3. **⚠️ Never commit the `.env` file** - it's already in `.gitignore`
 
 ### 5. Google Maps Setup
 
