@@ -60,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-              // Dinosaur Animation
+             
               SizedBox(
                 height: responsive.value(mobile: screenHeight * 0.25, tablet: 200, desktop: 180),
                 child: Lottie.asset(
