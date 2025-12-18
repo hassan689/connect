@@ -77,8 +77,8 @@ Before running this project, make sure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/hassan689/connect-open-source.git
-cd connect-open-source
+git clone https://github.com/hassan689/connect.git
+cd connect
 ```
 
 ### 2. Install Dependencies
@@ -223,7 +223,7 @@ flutter build web --release
 
 ## 📚 Documentation
 
-- [Security Guidelines](SECURITY.md)
+- [Getting Started](docs/GETTING_STARTED.md)
 - [Contributing Guide](CONTRIBUTING.md)
 - [Code of Conduct](CODE_OF_CONDUCT.md)
 

@@ -194,6 +194,12 @@ When adding new features:
 - Check existing issues and discussions
 - Contact maintainers via GitHub
 
+Helpful links:
+
+- Pull request template: `.github/PULL_REQUEST_TEMPLATE.md`
+- Issue templates: `.github/ISSUE_TEMPLATE/`
+- Getting started guide: `docs/GETTING_STARTED.md`
+
 Thank you for contributing! 🎉
 
 
