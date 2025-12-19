@@ -1,4 +1,4 @@
-# Connect - Task Management App
+# Connect
 [![CI/CD Pipeline](https://github.com/hassan689/connect-open-source/actions/workflows/ci.yml/badge.svg)](https://github.com/hassan689/connect/actions/workflows/ci.yml)
 [![Flutter Version](https://img.shields.io/badge/Flutter-3.16.0-blue.svg)](https://flutter.dev/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
