@@ -2,7 +2,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:linkster/core/constants/app_constants.dart';
+import 'package:connect/core/constants/app_constants.dart';
 
 /// Service for managing local and push notifications
 class NotificationService {

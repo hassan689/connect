@@ -4,16 +4,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:linkster/core/theme/app_theme.dart';
-import 'package:linkster/loginpage/loginp.dart';
-import 'package:linkster/profilepage/account_info.dart';
-import 'package:linkster/widgets/shimmer_loading.dart';
-import 'package:linkster/profilepage/notification_settings.dart';
-import 'package:linkster/profilepage/payment_settings.dart';
-import 'package:linkster/profilepage/task_alerts.dart';
-import 'package:linkster/profilepage/tasker_dashboard.dart';
-import 'package:linkster/connects/notification.dart';
-import 'package:linkster/messaging/message_requests_screen.dart';
+import 'package:connect/core/theme/app_theme.dart';
+import 'package:connect/loginpage/loginp.dart';
+import 'package:connect/profilepage/account_info.dart';
+import 'package:connect/widgets/shimmer_loading.dart';
+import 'package:connect/profilepage/notification_settings.dart';
+import 'package:connect/profilepage/payment_settings.dart';
+import 'package:connect/profilepage/task_alerts.dart';
+import 'package:connect/profilepage/tasker_dashboard.dart';
+import 'package:connect/connects/notification.dart';
+import 'package:connect/messaging/message_requests_screen.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});

@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:linkster/screens/engagement_notification_settings.dart';
-import 'package:linkster/screens/language_selection_screen.dart';
+import 'package:connect/screens/engagement_notification_settings.dart';
+import 'package:connect/screens/language_selection_screen.dart';
 
 class NotificationSettingsScreen extends StatefulWidget {
   const NotificationSettingsScreen({super.key});

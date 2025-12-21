@@ -1,12 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:linkster/task_post/title.dart';
-import 'package:linkster/services/points_service.dart';
-import 'package:linkster/search_tasks/taskdetails.dart';
-import 'package:linkster/widgets/shimmer_loading.dart';
-import 'package:linkster/task_post/task_completion_screen.dart';
-import 'package:linkster/task_post/payment_confirmation_screen.dart';
+import 'package:connect/task_post/title.dart';
+import 'package:connect/services/points_service.dart';
+import 'package:connect/search_tasks/taskdetails.dart';
+import 'package:connect/widgets/shimmer_loading.dart';
+import 'package:connect/task_post/task_completion_screen.dart';
+import 'package:connect/task_post/payment_confirmation_screen.dart';
 import 'package:lottie/lottie.dart';
 import 'package:google_fonts/google_fonts.dart';
 

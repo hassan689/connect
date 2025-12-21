@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:linkster/task_post/finalscree.dart';
-import 'package:linkster/l10n/app_localizations.dart';
+import 'package:connect/task_post/finalscree.dart';
+import 'package:connect/l10n/app_localizations.dart';
 import 'title.dart'; // Your custom app bar
 
 class DecideBudgetScreen extends StatefulWidget {

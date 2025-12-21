@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:linkster/ai_agent/ai_service.dart';
+import 'package:connect/ai_agent/ai_service.dart';
 
 class DinoAgentScreen extends StatefulWidget {
   const DinoAgentScreen({super.key});
@@ -25,7 +25,7 @@ class _DinoAgentScreenState extends State<DinoAgentScreen> {
   void _initializeDino() {
     // Welcome message from Dino
     _addMessage(
-      'Hi there! 👋 I\'m Dino, your personal Linkster guide! 🦕\n\nI\'m here to help you get the most out of our task marketplace. What would you like to know?',
+      'Hi there! 👋 I\'m Dino, your personal Connect guide! 🦕\n\nI\'m here to help you get the most out of our task marketplace. What would you like to know?',
       isUser: false,
       isWelcome: true,
     );
@@ -91,7 +91,7 @@ class _DinoAgentScreenState extends State<DinoAgentScreen> {
       });
       
       _addMessage(
-        'Oops! Something went wrong. Let me try again... 🤔\n\nHow can I help you with Linkster?',
+        'Oops! Something went wrong. Let me try again... 🤔\n\nHow can I help you with Connect?',
         isUser: false,
       );
     }

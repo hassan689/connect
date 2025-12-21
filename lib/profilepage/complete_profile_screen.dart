@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:linkster/menupage/mainp.dart';
+import 'package:connect/menupage/mainp.dart';
 import 'dart:io';
 import 'package:lottie/lottie.dart';
 

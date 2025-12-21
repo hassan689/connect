@@ -8,7 +8,7 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:linkster/config/app_config.dart';
+import 'package:connect/config/app_config.dart';
 import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
 

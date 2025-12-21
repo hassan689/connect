@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:linkster/task_post/photo.dart';
-import 'package:linkster/ai_services/huggingface_service.dart';
+import 'package:connect/task_post/photo.dart';
+import 'package:connect/ai_services/huggingface_service.dart';
 import 'title.dart';
 
 class TaskDescriptionScreen extends StatefulWidget {

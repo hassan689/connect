@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:linkster/messaging/chat_screen.dart';
+import 'package:connect/messaging/chat_screen.dart';
 import 'package:lottie/lottie.dart';
 
 class MessageRequestsScreen extends StatefulWidget {

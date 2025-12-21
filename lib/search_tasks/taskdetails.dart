@@ -4,10 +4,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import 'package:linkster/core/theme/app_theme.dart';
-import 'package:linkster/profilepage/publicprofile.dart';
-import 'package:linkster/search_tasks/mappoints/points.dart';
-import 'package:linkster/search_tasks/offer_verification/offer_verification_screen.dart';
+import 'package:connect/core/theme/app_theme.dart';
+import 'package:connect/profilepage/publicprofile.dart';
+import 'package:connect/search_tasks/mappoints/points.dart';
+import 'package:connect/search_tasks/offer_verification/offer_verification_screen.dart';
 
 class TaskDetailsScreen extends StatefulWidget {
   final String taskId;

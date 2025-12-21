@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:linkster/services/engagement_notifications.dart';
+import 'package:connect/services/engagement_notifications.dart';
 
 class EngagementNotificationSettings extends StatefulWidget {
   const EngagementNotificationSettings({super.key});

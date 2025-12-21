@@ -3,10 +3,10 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
-import 'package:linkster/firebase/fb.dart';
-import 'package:linkster/signuppage/signuppage.dart';
-import 'package:linkster/profilepage/profile_check_wrapper.dart';
-import 'package:linkster/core/utils/responsive.dart';
+import 'package:connect/firebase/fb.dart';
+import 'package:connect/signuppage/signuppage.dart';
+import 'package:connect/profilepage/profile_check_wrapper.dart';
+import 'package:connect/core/utils/responsive.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -450,10 +450,10 @@ class _LoginPageState extends State<LoginPage> {
                     ActionCodeSettings(
                       url: 'https://YOUR_PROJECT_ID.firebaseapp.com/__/auth/action',
                       handleCodeInApp: true,
-                      androidPackageName: 'com.example.linkster',
+                      androidPackageName: 'com.example.connect',
                       androidInstallApp: true,
                       androidMinimumVersion: '12',
-                      iOSBundleId: 'com.example.linkster',
+                      iOSBundleId: 'com.example.connect',
                     ),
                   );
                   if (context.mounted) {

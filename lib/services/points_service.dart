@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:linkster/config/app_config.dart';
+import 'package:connect/config/app_config.dart';
 
 /// Points Service - Handles point-based transactions and commission
 /// Replaces the JazzCash payment system with a point-based system

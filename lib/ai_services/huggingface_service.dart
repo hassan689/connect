@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:linkster/config/app_config.dart';
+import 'package:connect/config/app_config.dart';
 
 class HuggingFaceService {
   static String get _apiToken => AppConfig.huggingFaceApiToken;

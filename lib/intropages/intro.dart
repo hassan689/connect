@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart' show kIsWeb, debugPrint;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:linkster/loginpage/loginp.dart';
-import 'package:linkster/signuppage/signuppage.dart';
-import 'package:linkster/core/utils/responsive.dart';
+import 'package:connect/loginpage/loginp.dart';
+import 'package:connect/signuppage/signuppage.dart';
+import 'package:connect/core/utils/responsive.dart';
 import 'package:lottie/lottie.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:linkster/profilepage/profile_check_wrapper.dart';
+import 'package:connect/profilepage/profile_check_wrapper.dart';
 
 class IntroScreen extends StatefulWidget {
   const IntroScreen({super.key});

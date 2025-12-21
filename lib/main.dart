@@ -3,13 +3,13 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:linkster/core/constants/app_constants.dart';
-import 'package:linkster/core/services/firebase_service.dart';
-import 'package:linkster/core/services/notification_service.dart';
-import 'package:linkster/core/theme/app_theme.dart';
-import 'package:linkster/intropages/intro.dart';
-import 'package:linkster/l10n/app_localizations.dart';
-import 'package:linkster/services/engagement_notifications.dart';
+import 'package:connect/core/constants/app_constants.dart';
+import 'package:connect/core/services/firebase_service.dart';
+import 'package:connect/core/services/notification_service.dart';
+import 'package:connect/core/theme/app_theme.dart';
+import 'package:connect/intropages/intro.dart';
+import 'package:connect/l10n/app_localizations.dart';
+import 'package:connect/services/engagement_notifications.dart';
 
 /// Background message handler for Firebase Cloud Messaging
 /// This runs in a separate isolate, so Firebase needs to be initialized here

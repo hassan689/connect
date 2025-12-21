@@ -5,17 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:linkster/connects/notification.dart';
-import 'package:linkster/profilepage/profile.dart';
-import 'package:linkster/search_tasks/taskdetails.dart';
-import 'package:linkster/search_tasks/tasks.dart';
-import 'package:linkster/task_post/mytasks.dart';
-import 'package:linkster/task_post/title.dart';
-import 'package:linkster/core/utils/responsive.dart';
+import 'package:connect/connects/notification.dart';
+import 'package:connect/profilepage/profile.dart';
+import 'package:connect/search_tasks/taskdetails.dart';
+import 'package:connect/search_tasks/tasks.dart';
+import 'package:connect/task_post/mytasks.dart';
+import 'package:connect/task_post/title.dart';
+import 'package:connect/core/utils/responsive.dart';
 
-import 'package:linkster/ai_agent/dino_agent.dart';
-import 'package:linkster/messaging/messages_screen.dart';
-import 'package:linkster/ai_services/ai_demo_screen.dart';
+import 'package:connect/ai_agent/dino_agent.dart';
+import 'package:connect/messaging/messages_screen.dart';
+import 'package:connect/ai_services/ai_demo_screen.dart';
 import 'package:lottie/lottie.dart';
 
 // Guide Step class for dino tutorial

@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:linkster/services/points_service.dart';
+import 'package:connect/services/points_service.dart';
 
 /// Payment Confirmation Screen - Shows payment details before processing
 class PaymentConfirmationScreen extends StatefulWidget {

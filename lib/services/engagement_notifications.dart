@@ -17,7 +17,7 @@ class EngagementNotificationService {
       'body': 'Why did the dino go to the doctor? Because he had a "rawr" throat! 🦖',
     },
     {
-      'title': '🤣 Linkster Humor',
+      'title': '🤣 Connect Humor',
       'body': 'What do you call a task that\'s always late? A "deadline"! 😅',
     },
     {

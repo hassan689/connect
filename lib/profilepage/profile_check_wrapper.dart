@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:linkster/menupage/mainp.dart';
-import 'package:linkster/profilepage/complete_profile_screen.dart';
-import 'package:linkster/loginpage/loginp.dart';
+import 'package:connect/menupage/mainp.dart';
+import 'package:connect/profilepage/complete_profile_screen.dart';
+import 'package:connect/loginpage/loginp.dart';
 
 class ProfileCheckWrapper extends StatefulWidget {
   const ProfileCheckWrapper({super.key});

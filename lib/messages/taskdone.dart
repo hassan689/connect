@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:linkster/menupage/mainp.dart';
+import 'package:connect/menupage/mainp.dart';
 import 'package:lottie/lottie.dart';
 
 class TaskPostedAnimationScreen extends StatefulWidget {

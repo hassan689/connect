@@ -12,7 +12,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 /// 
 /// To use this file:
 /// 1. (Optional) Create .env file in root directory
-/// 2. Import it in your code: import 'package:linkster/config/app_config.dart';
+/// 2. Import it in your code: import 'package:connect/config/app_config.dart';
 /// 3. Access values: AppConfig.stripePublishableKey
 
 class AppConfig {
@@ -120,9 +120,9 @@ class AppConfig {
 
   // Firebase iOS Bundle ID
   static String get firebaseIosBundleId => 
-      _getEnv('FIREBASE_IOS_BUNDLE_ID', 'com.example.linkster');
+      _getEnv('FIREBASE_IOS_BUNDLE_ID', 'com.example.connect');
   static String get firebaseMacosBundleId => 
-      _getEnv('FIREBASE_MACOS_BUNDLE_ID', 'com.example.linkster');
+      _getEnv('FIREBASE_MACOS_BUNDLE_ID', 'com.example.connect');
 
   // ============================================================================
   // GOOGLE MAPS CONFIGURATION
@@ -172,7 +172,7 @@ class AppConfig {
   
   /// Application Package Name
   static String get appPackageName => 
-      _getEnv('APP_PACKAGE_NAME', 'com.example.linkster');
+      _getEnv('APP_PACKAGE_NAME', 'com.example.connect');
 
   // ============================================================================
   // POINTS SYSTEM CONFIGURATION

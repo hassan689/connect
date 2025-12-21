@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:linkster/task_post/budget.dart';
+import 'package:connect/task_post/budget.dart';
 import 'title.dart'; // Your custom app bar
 
 class UploadPhotoScreen extends StatefulWidget {

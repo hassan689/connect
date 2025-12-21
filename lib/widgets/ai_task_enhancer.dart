@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:linkster/ai_services/huggingface_service.dart';
+import 'package:connect/ai_services/huggingface_service.dart';
 
 class AITaskEnhancer extends StatefulWidget {
   final String initialDescription;

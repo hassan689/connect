@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:linkster/ai_agent/dino_agent.dart';
+import 'package:connect/ai_agent/dino_agent.dart';
 
 class DinoWelcomeScreen extends StatefulWidget {
   const DinoWelcomeScreen({super.key});

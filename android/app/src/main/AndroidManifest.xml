@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.linkster">
+    package="com.example.connect">
 
     <!-- ✅ ADD THESE PERMISSIONS -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -46,7 +46,7 @@
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
-                <data android:scheme="com.example.linkster" android:host="github-auth"/>
+                <data android:scheme="com.example.connect" android:host="github-auth"/>
             </intent-filter>
             <!-- Firebase Auth handler deep link -->
             <intent-filter>

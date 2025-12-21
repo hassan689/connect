@@ -5,10 +5,10 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
-import 'package:linkster/firebase/fb.dart';
-import 'package:linkster/profilepage/complete_profile_screen.dart';
-import 'package:linkster/menupage/mainp.dart';
-import 'package:linkster/loginpage/loginp.dart'; // Added import for LoginPage
+import 'package:connect/firebase/fb.dart';
+import 'package:connect/profilepage/complete_profile_screen.dart';
+import 'package:connect/menupage/mainp.dart';
+import 'package:connect/loginpage/loginp.dart'; // Added import for LoginPage
 import 'dart:async'; // Added for Timer
 
 class SignupPage extends StatefulWidget {
@@ -777,10 +777,10 @@ class _SignupPageState extends State<SignupPage> {
                     ActionCodeSettings(
                       url: 'https://YOUR_PROJECT_ID.firebaseapp.com/__/auth/action',
                       handleCodeInApp: true,
-                      androidPackageName: 'com.example.linkster',
+                      androidPackageName: 'com.example.connect',
                       androidInstallApp: true,
                       androidMinimumVersion: '12',
-                      iOSBundleId: 'com.example.linkster',
+                      iOSBundleId: 'com.example.connect',
                     ),
                   );
                   Navigator.of(context).pop();
@@ -906,10 +906,10 @@ class _SignupPageState extends State<SignupPage> {
                     ActionCodeSettings(
                       url: 'https://YOUR_PROJECT_ID.firebaseapp.com/__/auth/action',
                       handleCodeInApp: true,
-                      androidPackageName: 'com.example.linkster',
+                      androidPackageName: 'com.example.connect',
                       androidInstallApp: true,
                       androidMinimumVersion: '12',
-                      iOSBundleId: 'com.example.linkster',
+                      iOSBundleId: 'com.example.connect',
                     ),
                   );
                   Navigator.of(context).pop();

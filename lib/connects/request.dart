@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:linkster/connects/notification_service.dart';
-import 'package:linkster/menupage/mainp.dart';
-import 'package:linkster/messages/universalfunctions.dart';
+import 'package:connect/connects/notification_service.dart';
+import 'package:connect/menupage/mainp.dart';
+import 'package:connect/messages/universalfunctions.dart';
 class PaymentRequestScreen extends StatefulWidget {
   final String taskTitle;
   final double budget;

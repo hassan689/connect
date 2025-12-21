@@ -5,8 +5,8 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:linkster/task_post/description.dart';
-import 'package:linkster/task_post/location_search.dart';
+import 'package:connect/task_post/description.dart';
+import 'package:connect/task_post/location_search.dart';
 import 'dart:async'; // Added for Timer
 import 'dart:typed_data'; // Added for Uint8List
 

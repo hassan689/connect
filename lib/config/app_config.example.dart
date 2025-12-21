@@ -102,7 +102,7 @@ class AppConfig {
   static const String defaultNotificationChannelId = 'default_channel';
   
   /// Application Package Name
-  static const String appPackageName = 'com.example.linkster';
+  static const String appPackageName = 'com.example.connect';
 }
 
 

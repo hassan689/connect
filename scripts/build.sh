@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Linkster App Build Script
+# Connect App Build Script
 # This script automates the build process for different platforms
 
 set -e
 
-echo "🚀 Starting Linkster App Build Process..."
+echo "🚀 Starting Connect App Build Process..."
 
 # Colors for output
 RED='\033[0;31m'

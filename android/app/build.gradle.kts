@@ -9,7 +9,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.linkster"
+    namespace = "com.example.connect"
     compileSdk = 36
     // ndkVersion = "27.0.12077973" // Commented out to use default NDK
 
@@ -24,7 +24,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.linkster"
+        applicationId = "com.example.connect"
         minSdk = flutter.minSdkVersion
         targetSdk = 36
         versionCode = flutter.versionCode

@@ -1,12 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:linkster/connects/address.dart';
-import 'package:linkster/connects/bankaccount.dart';
-import 'package:linkster/connects/dateofbirth.dart';
-import 'package:linkster/connects/notification_service.dart';
-import 'package:linkster/connects/phone_no.dart';
-import 'package:linkster/connects/request.dart';
+import 'package:connect/connects/address.dart';
+import 'package:connect/connects/bankaccount.dart';
+import 'package:connect/connects/dateofbirth.dart';
+import 'package:connect/connects/notification_service.dart';
+import 'package:connect/connects/phone_no.dart';
+import 'package:connect/connects/request.dart';
 
 class ConnectScreen extends StatefulWidget {
   final String taskId;

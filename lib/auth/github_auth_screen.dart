@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:linkster/profilepage/profile_check_wrapper.dart';
+import 'package:connect/profilepage/profile_check_wrapper.dart';
 import 'dart:async';
 
 /// GitHub OAuth WebView Screen

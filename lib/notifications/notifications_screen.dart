@@ -4,10 +4,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:linkster/search_tasks/taskdetails.dart';
-import 'package:linkster/widgets/shimmer_loading.dart';
-import 'package:linkster/task_post/task_completion_screen.dart';
-import 'package:linkster/task_post/task_completion_review_screen.dart';
+import 'package:connect/search_tasks/taskdetails.dart';
+import 'package:connect/widgets/shimmer_loading.dart';
+import 'package:connect/task_post/task_completion_screen.dart';
+import 'package:connect/task_post/task_completion_review_screen.dart';
 
 class NotificationsScreen extends StatefulWidget {
   const NotificationsScreen({super.key});

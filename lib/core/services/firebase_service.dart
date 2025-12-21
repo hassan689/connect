@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
-import 'package:linkster/firebase_options.dart';
+import 'package:connect/firebase_options.dart';
 
 /// Service for managing Firebase initialization and configuration
 class FirebaseService {

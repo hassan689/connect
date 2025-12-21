@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:linkster/config/app_config.dart';
+import 'package:connect/config/app_config.dart';
 
 class AIService {
   static String get _apiKey => AppConfig.openAiApiKey;

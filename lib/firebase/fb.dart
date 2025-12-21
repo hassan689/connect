@@ -23,10 +23,10 @@ class FirebaseAuthService {
             ActionCodeSettings(
               url: 'https://YOUR_PROJECT_ID.firebaseapp.com/__/auth/action',
               handleCodeInApp: true,
-              androidPackageName: 'com.example.linkster',
+              androidPackageName: 'com.example.connect',
               androidInstallApp: true,
               androidMinimumVersion: '12',
-              iOSBundleId: 'com.example.linkster',
+              iOSBundleId: 'com.example.connect',
             ),
           );
           print("Email verification sent successfully to: $email");
@@ -138,10 +138,10 @@ class FirebaseAuthService {
             ActionCodeSettings(
               url: 'https://YOUR_PROJECT_ID.firebaseapp.com/__/auth/action',
               handleCodeInApp: true,
-              androidPackageName: 'com.example.linkster',
+              androidPackageName: 'com.example.connect',
               androidInstallApp: true,
               androidMinimumVersion: '12',
-              iOSBundleId: 'com.example.linkster',
+              iOSBundleId: 'com.example.connect',
             ),
           );
           print("Email verification resent successfully to: ${user.email}");

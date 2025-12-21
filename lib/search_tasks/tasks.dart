@@ -3,11 +3,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:linkster/search_tasks/mappoints/points.dart';
-import 'package:linkster/search_tasks/taskdetails.dart';
-import 'package:linkster/ai_services/huggingface_service.dart';
-import 'package:linkster/widgets/shimmer_loading.dart';
-import 'package:linkster/core/utils/responsive.dart';
+import 'package:connect/search_tasks/mappoints/points.dart';
+import 'package:connect/search_tasks/taskdetails.dart';
+import 'package:connect/ai_services/huggingface_service.dart';
+import 'package:connect/widgets/shimmer_loading.dart';
+import 'package:connect/core/utils/responsive.dart';
 
 
 class BrowseTasksScreen extends StatefulWidget {
