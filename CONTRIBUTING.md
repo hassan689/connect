@@ -200,7 +200,7 @@ Helpful links:
 - Issue templates: `.github/ISSUE_TEMPLATE/`
 - Getting started guide: `docs/GETTING_STARTED.md`
 
-Thank you for contributing! 🎉
+Thank you for contributing!
 
 
 

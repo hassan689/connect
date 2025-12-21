@@ -5,10 +5,10 @@
 
 A modern task management application built with Flutter that connects service providers with clients. Connect makes it easy to find help for tasks or offer your services to others.
 <img width="1920" height="864" alt="Screenshot (134)" src="https://github.com/user-attachments/assets/1a437441-fd42-41a9-8d2c-9d94ed3c384e" />
-*demo* 
-https://connect-app-landing.netlify.app/
-Note: you can download the apk from the landing page :) 
-## 🚀 Features
+**Demo:** https://connect-app-landing.netlify.app/
+
+**Note:** You can download the APK from the landing page. 
+## Features
 
 ### For Task Seekers
 - **Browse Tasks**: Find available tasks in your area
@@ -33,7 +33,7 @@ Note: you can download the apk from the landing page :)
 - **Multi-platform**: Works on Android, iOS, and Web
 - **AI-Powered Assistance**: Get help navigating the app with Dino
 
-## 📱 Screenshots
+## Screenshots
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
 
@@ -50,7 +50,7 @@ Note: you can download the apk from the landing page :)
 </div>
 
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 - **Frontend**: Flutter 3.16.0
 - **Backend**: Firebase
@@ -62,7 +62,7 @@ Note: you can download the apk from the landing page :)
 - **Notifications**: Firebase Cloud Messaging
 - **AI Integration**: OpenAI & Hugging Face
 
-## 📋 Prerequisites
+## Prerequisites
 
 Before running this project, make sure you have the following installed:
 
@@ -72,7 +72,7 @@ Before running this project, make sure you have the following installed:
 - [Xcode](https://developer.apple.com/xcode/) (for iOS development, macOS only)
 - [Firebase CLI](https://firebase.google.com/docs/cli) (for Firebase setup)
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Clone the Repository
 
@@ -149,7 +149,7 @@ flutter run -d ios
 flutter run -d chrome
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 lib/
@@ -171,7 +171,7 @@ lib/
 └── main.dart                # App entry point
 ```
 
-##  Testing
+## Testing
 
 Run the test suite:
 
@@ -186,7 +186,7 @@ flutter test --coverage
 flutter test test/widget_test.dart
 ```
 
-## 🏗️ Building
+## Building
 
 ### Android
 
@@ -221,13 +221,13 @@ flutter build web --debug
 flutter build web --release
 ```
 
-## 📚 Documentation
+## Documentation
 
 - [Getting Started](docs/GETTING_STARTED.md)
 - [Contributing Guide](CONTRIBUTING.md)
 - [Code of Conduct](CODE_OF_CONDUCT.md)
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
 
@@ -243,11 +243,11 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 
 We follow the [Dart Style Guide](https://dart.dev/guides/language/effective-dart/style) and use [flutter_lints](https://pub.dev/packages/flutter_lints) for code analysis.
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🆘 Support
+## Support
 
 If you need help or have questions:
 
@@ -255,7 +255,7 @@ If you need help or have questions:
 - **Issues**: Create an issue on [GitHub](https://github.com/hassan689/connect/issues)
 - **Security**: Report security issues via [SECURITY.md](SECURITY.md)
 
-##  Acknowledgments
+## Acknowledgments
 
 - [Flutter Team](https://flutter.dev/) for the amazing framework
 - [Firebase](https://firebase.google.com/) for backend services
@@ -264,7 +264,7 @@ If you need help or have questions:
 - [Hugging Face](https://huggingface.co/) for AI models
 - All our contributors and users
 
-## 📊 Project Status
+## Project Status
 
 - ✅ Core functionality implemented
 - ✅ Authentication system (Email, Google, Apple)
@@ -280,6 +280,6 @@ If you need help or have questions:
 
 ---
 
-**Made with ❤️ by the Connect Team**
+**Developed by the Connect Team**
 
 [GitHub Repository](https://github.com/hassan689/connect) | [Report Issue](https://github.com/hassan689/connect-open-source/issues)
