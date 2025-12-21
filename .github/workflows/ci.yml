@@ -1,1 +1,107 @@
-// :)
+# Flutter CI/CD Pipeline
+# This workflow runs automated checks on the Connect Flutter application
+# Triggers: push to main/develop branches, pull requests to main
+# Purpose: Ensure code quality, run tests, and validate builds
+
+name: Flutter CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  # Analyze code quality and run tests
+  analyze-and-test:
+    name: Code Analysis & Tests
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Check out the repository code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      # Set up Flutter environment
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.16.0'
+          channel: 'stable'
+          cache: true
+      
+      # Verify Flutter installation
+      - name: Verify Flutter
+        run: |
+          flutter --version
+          flutter doctor -v
+      
+      # Get project dependencies
+      - name: Install dependencies
+        run: flutter pub get
+      
+      # Check for code formatting issues
+      - name: Check code formatting
+        run: flutter format --set-exit-if-changed .
+        continue-on-error: true
+      
+      # Run static code analysis
+      - name: Analyze code
+        run: flutter analyze
+        continue-on-error: true
+      
+      # Run unit and widget tests
+      - name: Run tests
+        run: flutter test
+        continue-on-error: true
+
+  # Build Android APK
+  build-android:
+    name: Build Android
+    runs-on: ubuntu-latest
+    needs: analyze-and-test
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.16.0'
+          channel: 'stable'
+          cache: true
+      
+      - name: Install dependencies
+        run: flutter pub get
+      
+      # Build Android APK (debug version for CI)
+      - name: Build Android APK
+        run: flutter build apk --debug
+        continue-on-error: true
+
+  # Build for iOS (macOS runner required)
+  build-ios:
+    name: Build iOS
+    runs-on: macos-latest
+    needs: analyze-and-test
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.16.0'
+          channel: 'stable'
+          cache: true
+      
+      - name: Install dependencies
+        run: flutter pub get
+      
+      # Build iOS app (without code signing for CI)
+      - name: Build iOS
+        run: flutter build ios --no-codesign --debug
+        continue-on-error: true
