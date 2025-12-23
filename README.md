@@ -279,7 +279,16 @@ If you need help or have questions:
 - 🔄 Advanced analytics (planned)
 
 ---
+## 🤝 Community, Discord & Contributions
 
+We believe in building Connect together.  
+Join our Discord server to:
+- Ask questions
+- Discuss features
+- Find contribution opportunities
+- Collaborate with other developers
+
+👉 [Join our Discord](https://discord.gg/Vc9P84fp)
 **Developed by the Connect Team**
 
 [GitHub Repository](https://github.com/hassan689/connect) | [Report Issue](https://github.com/hassan689/connect-open-source/issues)
