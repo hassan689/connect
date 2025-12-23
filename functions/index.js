@@ -6,7 +6,7 @@ const functions = require("firebase-functions");
 // firebase functions:config:set stripe.secret_key="your_stripe_secret_key"
 const stripeKey = functions.config().stripe?.secret_key || process.env.STRIPE_SECRET_KEY || "";
 if (!stripeKey) {
-  console.error("⚠️ Stripe secret key not configured. Set it in Firebase Functions config.");
+  functions.logger.error("⚠️ Stripe secret key not configured. Set it in Firebase Functions config.");
 }
 const stripe = require("stripe")(stripeKey);
 
@@ -14,58 +14,58 @@ admin.initializeApp();
 
 // 🔔 Firestore Trigger: Send FCM Notification
 exports.sendNotification = functions.firestore
-    .document("notification_requests/{docId}")
-    .onCreate(async (snap, context) => {
-      const {receiverToken, title, body} = snap.data();
+  .document("notification_requests/{docId}")
+  .onCreate(async (snap, context) => {
+    const { receiverToken, title, body } = snap.data();
 
-      const message = {
-        token: receiverToken,
+    const message = {
+      token: receiverToken,
+      notification: {
+        title: title,
+        body: body,
+      },
+      android: {
         notification: {
-          title: title,
-          body: body,
+          sound: "default",
+          priority: "high",
         },
-        android: {
-          notification: {
-            sound: "default",
-            priority: "high",
-          },
-        },
-      };
+      },
+    };
 
-      try {
-        await admin.messaging().send(message);
-        console.log("Notification sent successfully");
-        await snap.ref.delete();
-      } catch (error) {
-        console.error("Error sending notification:", error);
-      }
-    });
+    try {
+      await admin.messaging().send(message);
+      functions.logger.info("Notification sent successfully");
+      await snap.ref.delete();
+    } catch (error) {
+      functions.logger.error("Error sending notification:", error);
+    }
+  });
 
 // 💳 Callable: Create Stripe Payment Intent
 exports.createPaymentIntent = functions.https.onCall(
-    async (data, context) => {
-      const amount = data.amount;
+  async (data, context) => {
+    const amount = data.amount;
 
-      try {
-        const paymentIntent = await stripe.paymentIntents.create({
-          amount: amount,
-          currency: "usd",
-          automatic_payment_methods: {
-            enabled: true,
-          },
-        });
+    try {
+      const paymentIntent = await stripe.paymentIntents.create({
+        amount: amount,
+        currency: "usd",
+        automatic_payment_methods: {
+          enabled: true,
+        },
+      });
 
-        return {
-          clientSecret: paymentIntent.client_secret,
-        };
-      } catch (error) {
-        console.error("Stripe Error:", error.message);
-        throw new functions.https.HttpsError(
-            "internal",
-            "Unable to create payment intent",
-        );
-      }
-    },
+      return {
+        clientSecret: paymentIntent.client_secret,
+      };
+    } catch (error) {
+      functions.logger.error("Stripe Error:", error.message);
+      throw new functions.https.HttpsError(
+        "internal",
+        "Unable to create payment intent",
+      );
+    }
+  },
 );
 
 const functions = require('firebase-functions');
@@ -158,15 +158,15 @@ exports.sendEngagementNotifications = functions.pubsub
   .timeZone('Asia/Karachi')
   .onRun(async (context) => {
     try {
-      console.log('🕐 Starting daily engagement notifications...');
-      
+      functions.logger.info('🕐 Starting daily engagement notifications...');
+
       // Get all users who haven't received a notification today
       const today = new Date().toISOString().split('T')[0];
       const usersSnapshot = await db.collection('users')
         .where('lastEngagementNotification', '!=', today)
         .get();
 
-      console.log(`📱 Found ${usersSnapshot.size} users to notify`);
+      functions.logger.info(`📱 Found ${usersSnapshot.size} users to notify`);
 
       const batch = db.batch();
       let notificationCount = 0;
@@ -178,12 +178,12 @@ exports.sendEngagementNotifications = functions.pubsub
 
         // Check if user has disabled notifications
         if (preferences.daily === false) {
-          console.log(`⏭️ Skipping user ${userDoc.id} - notifications disabled`);
+          functions.logger.info(`⏭️ Skipping user ${userDoc.id} - notifications disabled`);
           continue;
         }
 
         if (!fcmToken) {
-          console.log(`⚠️ No FCM token for user ${userDoc.id}`);
+          functions.logger.info(`⚠️ No FCM token for user ${userDoc.id}`);
           continue;
         }
 
@@ -213,7 +213,7 @@ exports.sendEngagementNotifications = functions.pubsub
           };
 
           const response = await admin.messaging().send(message);
-          console.log(`✅ Notification sent to ${userDoc.id}: ${response}`);
+          functions.logger.info(`✅ Notification sent to ${userDoc.id}: ${response}`);
 
           // Update user's last notification date
           batch.update(userDoc.ref, {
@@ -223,17 +223,17 @@ exports.sendEngagementNotifications = functions.pubsub
 
           notificationCount++;
         } catch (error) {
-          console.error(`❌ Failed to send notification to ${userDoc.id}:`, error);
+          functions.logger.error(`❌ Failed to send notification to ${userDoc.id}:`, error);
         }
       }
 
       // Commit batch updates
       await batch.commit();
-      console.log(`🎉 Successfully sent ${notificationCount} engagement notifications`);
+      functions.logger.info(`🎉 Successfully sent ${notificationCount} engagement notifications`);
 
       return { success: true, notificationsSent: notificationCount };
     } catch (error) {
-      console.error('❌ Error in sendEngagementNotifications:', error);
+      functions.logger.error('❌ Error in sendEngagementNotifications:', error);
       throw error;
     }
   });
@@ -242,7 +242,7 @@ exports.sendEngagementNotifications = functions.pubsub
 exports.sendImmediateEngagementNotification = functions.https.onRequest(async (req, res) => {
   try {
     const { userId } = req.body;
-    
+
     if (!userId) {
       res.status(400).json({ error: 'userId is required' });
       return;
@@ -284,14 +284,14 @@ exports.sendImmediateEngagementNotification = functions.https.onRequest(async (r
     };
 
     const response = await admin.messaging().send(message);
-    
-    res.json({ 
-      success: true, 
+
+    res.json({
+      success: true,
       messageId: response,
-      content: content 
+      content: content
     });
   } catch (error) {
-    console.error('❌ Error sending immediate notification:', error);
+    functions.logger.error('❌ Error sending immediate notification:', error);
     res.status(500).json({ error: error.message });
   }
 });
@@ -305,13 +305,13 @@ exports.processScheduledNotifications = functions.firestore
       const { userId, title, body, scheduledTime, sent } = notificationData;
 
       if (sent) {
-        console.log('⏭️ Notification already sent');
+        functions.logger.info('⏭️ Notification already sent');
         return;
       }
 
       const userDoc = await db.collection('users').doc(userId).get();
       if (!userDoc.exists) {
-        console.log('❌ User not found');
+        functions.logger.info('❌ User not found');
         return;
       }
 
@@ -319,7 +319,7 @@ exports.processScheduledNotifications = functions.firestore
       const fcmToken = userData.fcmToken;
 
       if (!fcmToken) {
-        console.log('❌ No FCM token found');
+        functions.logger.info('❌ No FCM token found');
         return;
       }
 
@@ -344,12 +344,12 @@ exports.processScheduledNotifications = functions.firestore
       };
 
       const response = await admin.messaging().send(message);
-      console.log(`✅ Scheduled notification sent: ${response}`);
+      functions.logger.info(`✅ Scheduled notification sent: ${response}`);
 
       // Mark as sent
       await snap.ref.update({ sent: true, sentAt: admin.firestore.FieldValue.serverTimestamp() });
 
     } catch (error) {
-      console.error('❌ Error processing scheduled notification:', error);
+      functions.logger.error('❌ Error processing scheduled notification:', error);
     }
   });
