@@ -287,6 +287,5 @@ Join our Discord server to:
 - Collaborate with other developers
 
 👉 [Join our Discord](https://discord.gg/Vc9P84fp)
-**Developed by the Connect Team**
 
 [GitHub Repository](https://github.com/hassan689/connect) | [Report Issue](https://github.com/hassan689/connect-open-source/issues)
