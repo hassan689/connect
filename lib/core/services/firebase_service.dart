@@ -30,10 +30,11 @@ class FirebaseService {
           return true;
         }
       }
-
-      await Firebase.initializeApp(
-        options: DefaultFirebaseOptions.currentPlatform,
-      );
+ /* You can uncomment this if you want to use the default firebase options */
+      //  await Firebase.initializeApp(
+      //  options: DefaultFirebaseOptions.currentPlatform,
+      //);
+  
       _isInitialized = true;
       debugPrint('✅ Firebase initialized successfully');
       return true;
