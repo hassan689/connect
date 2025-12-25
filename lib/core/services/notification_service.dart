@@ -31,8 +31,15 @@ class NotificationService {
         AppConstants.notificationIcon,
       );
 
+      const iosSettings = DarwinInitializationSettings(
+        requestAlertPermission: true,
+        requestBadgePermission: true,
+        requestSoundPermission: true,
+      );
+
       const initializationSettings = InitializationSettings(
         android: androidSettings,
+        iOS: iosSettings,
       );
 
       await _plugin.initialize(
@@ -80,7 +87,7 @@ class NotificationService {
     }
   }
 
-  /// Get notification details for Android
+  /// Get notification details for Android and iOS
   static NotificationDetails _getNotificationDetails() {
     return const NotificationDetails(
       android: AndroidNotificationDetails(
@@ -95,6 +102,11 @@ class NotificationService {
         ledColor: Colors.blue,
         ledOnMs: AppConstants.ledOnMs,
         ledOffMs: AppConstants.ledOffMs,
+      ),
+      iOS: DarwinNotificationDetails(
+        presentAlert: true,
+        presentBadge: true,
+        presentSound: true,
       ),
     );
   }
