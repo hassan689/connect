@@ -4,13 +4,21 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
+/// Service for managing engaging notifications to keep users active.
+/// 
+/// Sends periodic fun content including jokes, tips, and motivational messages
+/// to maintain user engagement. Uses local notifications and tracks delivery
+/// to avoid spamming users with duplicate content.
 class EngagementNotificationService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FlutterLocalNotificationsPlugin _notificationsPlugin = 
       FlutterLocalNotificationsPlugin();
 
-  // Collection of engaging content
+  /// Collection of humorous content for engagement notifications.
+  /// 
+  /// Contains dino-themed jokes and fun facts to make notifications
+  /// entertaining and memorable for users.
   static const List<Map<String, String>> _jokes = [
     {
       'title': '😄 Dino Joke Time!',
@@ -34,6 +42,10 @@ class EngagementNotificationService {
     },
   ];
 
+  /// Collection of helpful tips for using the Connect app effectively.
+  /// 
+  /// Provides actionable advice on completing profiles, improving ratings,
+  /// and maximizing earnings on the platform.
   static const List<Map<String, String>> _tips = [
     {
       'title': '💡 Pro Tip',
@@ -57,6 +69,10 @@ class EngagementNotificationService {
     },
   ];
 
+  /// Collection of motivational messages to encourage users.
+  /// 
+  /// Contains positive affirmations and encouragement to keep users
+  /// motivated about their work on the platform.
   static const List<Map<String, String>> _motivational = [
     {
       'title': '🌟 You\'re Amazing!',
@@ -80,12 +96,19 @@ class EngagementNotificationService {
     },
   ];
 
-  // Initialize the service
+  /// Initializes the engagement notification service.
+  /// 
+  /// Sets up local notifications and schedules engagement notifications
+  /// for the current user. Should be called during app initialization.
   Future<void> initialize() async {
     await _initLocalNotifications();
     await _scheduleEngagementNotifications();
   }
 
+  /// Initializes local notification settings for Android.
+  /// 
+  /// Configures the notification plugin with Android-specific settings
+  /// required for displaying engagement notifications.
   Future<void> _initLocalNotifications() async {
     const AndroidInitializationSettings androidSettings = 
         AndroidInitializationSettings('@mipmap/ic_launcher');
@@ -96,7 +119,14 @@ class EngagementNotificationService {
     await _notificationsPlugin.initialize(settings);
   }
 
-  // Schedule engagement notifications
+  /// Schedules and sends daily engagement notifications to users.
+  /// 
+  /// Checks if a notification has already been sent today to avoid spam.
+  /// Randomly selects content type (joke, tip, or motivational) and sends
+  /// a local notification. Tracks delivery in Firestore.
+  /// 
+  /// Does nothing if the user has already received a notification today
+  /// or if no user is currently authenticated.
   Future<void> _scheduleEngagementNotifications() async {
     final user = _auth.currentUser;
     if (user == null) return;
@@ -145,7 +175,13 @@ class EngagementNotificationService {
     print('📱 Engagement notification sent: ${content['title']}');
   }
 
-  // Send local notification
+  /// Sends a local notification with the specified content.
+  /// 
+  /// Displays a notification using the Flutter Local Notifications plugin
+  /// with Android-specific styling including vibration, sound, and app colors.
+  /// 
+  /// [title] The notification title to display
+  /// [body] The notification body message to display
   Future<void> _sendLocalNotification(String title, String body) async {
     const AndroidNotificationDetails androidDetails = AndroidNotificationDetails(
       'engagement_channel',
@@ -173,7 +209,11 @@ class EngagementNotificationService {
     );
   }
 
-  // Send immediate engagement notification (for testing)
+  /// Sends an immediate engagement notification for testing purposes.
+  /// 
+  /// Bypasses the once-per-day limitation and immediately sends a randomly
+  /// selected engagement notification. Useful for testing notification
+  /// delivery and appearance during development.
   Future<void> sendImmediateEngagementNotification() async {
     final random = Random();
     final contentTypes = ['joke', 'tip', 'motivational'];
@@ -198,7 +238,13 @@ class EngagementNotificationService {
     print('📱 Immediate engagement notification sent: ${content['title']}');
   }
 
-  // Schedule notification for specific time
+  /// Schedules a notification to be sent at a specific future time.
+  /// 
+  /// Creates a scheduled notification record in Firestore that can be
+  /// processed by a backend service or cloud function to deliver the
+  /// notification at the specified time.
+  /// 
+  /// [scheduledTime] The DateTime when the notification should be sent
   Future<void> scheduleNotificationForTime(DateTime scheduledTime) async {
     final user = _auth.currentUser;
     if (user == null) return;
@@ -219,7 +265,15 @@ class EngagementNotificationService {
     print('📅 Notification scheduled for: ${scheduledTime.toString()}');
   }
 
-  // Get user engagement statistics
+  /// Retrieves engagement statistics for the current user.
+  /// 
+  /// Returns information about how many engagement notifications the user
+  /// has received and their notification preferences.
+  /// 
+  /// Returns a Map containing:
+  /// - `totalNotifications`: Total count of engagement notifications sent
+  /// - `lastNotification`: Date of the last notification or 'Never'
+  /// - `notificationPreference`: User's notification preference setting
   Future<Map<String, dynamic>> getUserEngagementStats() async {
     final user = _auth.currentUser;
     if (user == null) return {};
@@ -234,7 +288,15 @@ class EngagementNotificationService {
     };
   }
 
-  // Update user notification preferences
+  /// Updates the user's notification preferences.
+  /// 
+  /// Allows users to customize which types of engagement notifications
+  /// they want to receive (jokes, tips, motivational) and frequency.
+  /// 
+  /// [jokes] Whether to receive joke notifications
+  /// [tips] Whether to receive tip notifications
+  /// [motivational] Whether to receive motivational notifications
+  /// [daily] Whether to receive daily notifications
   Future<void> updateNotificationPreferences({
     required bool jokes,
     required bool tips,
