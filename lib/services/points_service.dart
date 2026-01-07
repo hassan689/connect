@@ -2,16 +2,42 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:connect/config/app_config.dart';
 
-/// Points Service - Handles point-based transactions and commission
-/// Replaces the JazzCash payment system with a point-based system
+/// Points Service - Handles point-based transactions and commission.
+/// 
+/// Manages the platform's point-based payment system that replaces traditional
+/// payment methods. Handles commission calculations, point transfers between
+/// users, and transaction record keeping.
+/// 
+/// Commission structure:
+/// - Platform takes a percentage commission (configurable)
+/// - Service providers receive the remaining percentage
+/// - All transactions are recorded for analytics and auditing
 class PointsService {
-  // Commission rates loaded from environment configuration
+  /// Platform commission rate loaded from environment configuration.
+  /// 
+  /// Represents the percentage of points taken by the platform from each
+  /// transaction (e.g., 0.10 for 10%).
   static double get platformCommissionRate => AppConfig.platformCommissionRate;
+  
+  /// Provider payout rate loaded from environment configuration.
+  /// 
+  /// Represents the percentage of points paid to service providers after
+  /// platform commission is deducted (e.g., 0.90 for 90%).
   static double get providerPayoutRate => AppConfig.providerPayoutRate;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  /// Calculate commission amounts for points
+  /// Calculates commission amounts for a point transaction.
+  /// 
+  /// Splits the total points into platform commission and provider payout
+  /// based on the configured commission rates.
+  /// 
+  /// [totalPoints] The total number of points in the transaction
+  /// 
+  /// Returns a Map containing:
+  /// - `totalPoints`: The original total points
+  /// - `platformCommission`: Points taken by the platform
+  /// - `providerPayout`: Points paid to the service provider
   static Map<String, double> calculateCommission(double totalPoints) {
     final platformCommission = totalPoints * platformCommissionRate;
     final providerPayout = totalPoints * providerPayoutRate;
@@ -23,7 +49,14 @@ class PointsService {
     };
   }
 
-  /// Get user's current point balance
+  /// Retrieves the current point balance for a user.
+  /// 
+  /// Fetches the user's points balance from their Firestore document.
+  /// Returns 0.0 if the user doesn't exist or has no points data.
+  /// 
+  /// [userId] The ID of the user whose points to retrieve
+  /// 
+  /// Returns the user's current point balance as a double
   Future<double> getUserPoints(String userId) async {
     try {
       final userDoc = await _firestore.collection('users').doc(userId).get();
@@ -39,7 +72,22 @@ class PointsService {
     }
   }
 
-  /// Add points to user's account
+  /// Adds points to a user's account.
+  /// 
+  /// Credits points to the specified user's account within a Firestore
+  /// transaction to ensure consistency. Creates a transaction record for
+  /// audit purposes.
+  /// 
+  /// [userId] The ID of the user receiving points
+  /// [points] The number of points to add (must be positive)
+  /// [description] Optional description of why points were added
+  /// 
+  /// Returns a Map containing:
+  /// - `success`: true if points were added successfully
+  /// - `message`: Success message
+  /// - `error`: Error message if operation failed
+  /// 
+  /// Throws [Exception] if the user is not found
   Future<Map<String, dynamic>> addPoints({
     required String userId,
     required double points,
@@ -90,8 +138,33 @@ class PointsService {
     }
   }
 
-  /// Process payment when task is completed
-  /// Deducts from task poster's points and splits commission
+  /// Processes payment for a completed task.
+  /// 
+  /// Handles the complete payment flow when a task is marked as completed:
+  /// 1. Deducts total points from the task poster's account
+  /// 2. Transfers platform commission to platform account
+  /// 3. Transfers provider payout to service provider's account
+  /// 4. Creates transaction records for all parties
+  /// 5. Creates commission and payout records for analytics
+  /// 
+  /// All operations are executed within a Firestore transaction to ensure
+  /// data consistency and prevent partial updates.
+  /// 
+  /// [taskId] The ID of the completed task
+  /// [providerId] The ID of the service provider to pay
+  /// [taskPoints] The total points to transfer (task budget)
+  /// 
+  /// Returns a Map containing:
+  /// - `success`: true if payment processed successfully
+  /// - `platformCommission`: Amount of commission taken by platform
+  /// - `providerPayout`: Amount paid to the provider
+  /// - `message`: Success message
+  /// - `error`: Error message if operation failed
+  /// 
+  /// Throws [Exception] if:
+  /// - Task is not found
+  /// - Task poster has insufficient points
+  /// - User is not authenticated
   Future<Map<String, dynamic>> processTaskPayment({
     required String taskId,
     required String providerId,
@@ -259,7 +332,21 @@ class PointsService {
     }
   }
 
-  /// Get platform commission summary
+  /// Retrieves platform commission summary statistics.
+  /// 
+  /// Aggregates commission data from the specified date range to provide
+  /// insights into platform revenue. Useful for administrative dashboards
+  /// and financial reporting.
+  /// 
+  /// [startDate] Optional start date for the summary period
+  /// [endDate] Optional end date for the summary period
+  /// 
+  /// Returns a Map containing:
+  /// - `success`: true if data retrieved successfully
+  /// - `totalCommission`: Sum of all commission points collected
+  /// - `transactionCount`: Number of transactions in the period
+  /// - `averageCommission`: Average commission per transaction
+  /// - `error`: Error message if operation failed
   Future<Map<String, dynamic>> getPlatformCommissionSummary({
     DateTime? startDate,
     DateTime? endDate,
@@ -300,7 +387,16 @@ class PointsService {
     }
   }
 
-  /// Get user's point transaction history
+  /// Streams a user's point transaction history.
+  /// 
+  /// Returns a real-time stream of the user's point transactions, ordered
+  /// by timestamp (most recent first). Useful for displaying transaction
+  /// history in the user interface.
+  /// 
+  /// [userId] The ID of the user whose transactions to retrieve
+  /// [limit] Maximum number of transactions to return (default: 10)
+  /// 
+  /// Returns a Stream of QuerySnapshot containing transaction documents
   Stream<QuerySnapshot> getUserPointTransactions(String userId, {int limit = 10}) {
     return _firestore
         .collection('users')

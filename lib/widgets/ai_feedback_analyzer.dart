@@ -2,8 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:connect/ai_services/huggingface_service.dart';
 
+/// Widget for AI-powered feedback analysis.
+/// 
+/// Provides a UI component that automatically analyzes user feedback using
+/// multiple AI models to determine:
+/// - Sentiment (Positive/Negative/Neutral) with confidence scores
+/// - Language detection for multilingual support
+/// - Visual indicators and progress bars for analysis results
+/// 
+/// This widget integrates with HuggingFaceService to provide comprehensive
+/// feedback analysis and insights.
 class AIFeedbackAnalyzer extends StatefulWidget {
+  /// The feedback text to analyze.
   final String feedback;
+  
+  /// Callback invoked when analysis is complete.
+  /// 
+  /// Receives a Map containing sentiment, language, and confidence data.
   final Function(Map<String, dynamic>) onAnalysisComplete;
 
   const AIFeedbackAnalyzer({
@@ -28,6 +43,13 @@ class _AIFeedbackAnalyzerState extends State<AIFeedbackAnalyzer> {
     }
   }
 
+  /// Analyzes the feedback using AI services.
+  /// 
+  /// Calls HuggingFaceService to perform sentiment analysis and language
+  /// detection on the feedback text. Updates the UI with results and
+  /// invokes the parent callback with analysis data.
+  /// 
+  /// Shows error messages if analysis fails.
   Future<void> _analyzeFeedback() async {
     if (widget.feedback.trim().isEmpty) {
       return;
@@ -62,6 +84,11 @@ class _AIFeedbackAnalyzerState extends State<AIFeedbackAnalyzer> {
     }
   }
 
+  /// Returns the appropriate color for a sentiment label.
+  /// 
+  /// [sentiment] The sentiment label ('positive', 'negative', 'neutral')
+  /// 
+  /// Returns green for positive, red for negative, orange for neutral
   Color _getSentimentColor(String sentiment) {
     switch (sentiment.toLowerCase()) {
       case 'positive':
@@ -74,6 +101,12 @@ class _AIFeedbackAnalyzerState extends State<AIFeedbackAnalyzer> {
     }
   }
 
+  /// Returns the appropriate icon for a sentiment label.
+  /// 
+  /// [sentiment] The sentiment label ('positive', 'negative', 'neutral')
+  /// 
+  /// Returns satisfied icon for positive, dissatisfied for negative,
+  /// neutral icon for neutral sentiment
   IconData _getSentimentIcon(String sentiment) {
     switch (sentiment.toLowerCase()) {
       case 'positive':

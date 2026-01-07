@@ -4,6 +4,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:connect/core/theme/app_theme.dart';
 
+/// Dashboard widget for displaying user analytics and task statistics.
+/// 
+/// Provides comprehensive visualizations of user activity including:
+/// - Task completion trends over the last 7 days
+/// - Revenue trends over the last 6 months
+/// - Category distribution of tasks
+/// - Monthly task and revenue trends
+/// 
+/// Data is fetched from Firestore and displayed using Syncfusion charts.
 class AnalyticsDashboard extends StatefulWidget {
   const AnalyticsDashboard({super.key});
 
@@ -28,6 +37,11 @@ class _AnalyticsDashboardState extends State<AnalyticsDashboard> {
     _loadAnalyticsData();
   }
 
+  /// Loads all analytics data from Firestore.
+  /// 
+  /// Fetches task completion, revenue, category distribution, and monthly
+  /// trend data for the current user. Updates the UI state when loading
+  /// is complete or if an error occurs.
   Future<void> _loadAnalyticsData() async {
     try {
       final user = _auth.currentUser;
@@ -56,6 +70,15 @@ class _AnalyticsDashboardState extends State<AnalyticsDashboard> {
     }
   }
 
+  /// Parses budget values from various data types to double.
+  /// 
+  /// Handles budget values that may be stored as numbers, strings,
+  /// or null values. Strips currency symbols and non-numeric characters
+  /// from string values before parsing.
+  /// 
+  /// [budget] The budget value from Firestore (can be num, String, or null)
+  /// 
+  /// Returns the budget as a double, or 0.0 if parsing fails
   double _parseBudget(dynamic budget) {
     if (budget == null) return 0.0;
     if (budget is num) return budget.toDouble();
@@ -66,6 +89,12 @@ class _AnalyticsDashboardState extends State<AnalyticsDashboard> {
     return 0.0;
   }
 
+  /// Loads task completion data for the current week.
+  /// 
+  /// Retrieves tasks created by the user in the last 7 days and groups
+  /// them by day of the week for the task completion chart.
+  /// 
+  /// [userId] The ID of the current user
   Future<void> _loadTaskCompletionData(String userId) async {
     try {
       final now = DateTime.now();
@@ -106,6 +135,12 @@ class _AnalyticsDashboardState extends State<AnalyticsDashboard> {
     }
   }
 
+  /// Loads revenue data for the last 6 months.
+  /// 
+  /// Retrieves completed tasks and aggregates their budget values by month
+  /// to show revenue trends over time.
+  /// 
+  /// [userId] The ID of the current user
   Future<void> _loadRevenueData(String userId) async {
     try {
       final now = DateTime.now();
@@ -148,6 +183,13 @@ class _AnalyticsDashboardState extends State<AnalyticsDashboard> {
     }
   }
 
+  /// Loads task category distribution data.
+  /// 
+  /// Retrieves all tasks for the user and calculates the percentage
+  /// distribution across different categories (from AI categorization
+  /// or manual task type selection).
+  /// 
+  /// [userId] The ID of the current user
   Future<void> _loadCategoryData(String userId) async {
     try {
       final tasksSnapshot = await _firestore
@@ -199,6 +241,12 @@ class _AnalyticsDashboardState extends State<AnalyticsDashboard> {
     }
   }
 
+  /// Loads combined monthly trends for tasks and revenue.
+  /// 
+  /// Retrieves task and revenue data for the last 6 months, showing
+  /// both metrics side-by-side to visualize business growth trends.
+  /// 
+  /// [userId] The ID of the current user
   Future<void> _loadMonthlyData(String userId) async {
     try {
       final now = DateTime.now();
@@ -561,32 +609,63 @@ class _AnalyticsDashboardState extends State<AnalyticsDashboard> {
   }
 }
 
-// Data classes for charts
+/// Data model for task completion by day of week.
+/// 
+/// Used in the task completion chart to display how many tasks
+/// were completed on each day of the current week.
 class TaskData {
+  /// Day of the week (e.g., 'Mon', 'Tue', 'Wed')
   final String day;
+  
+  /// Number of tasks completed on this day
   final int tasks;
 
   TaskData(this.day, this.tasks);
 }
 
+/// Data model for monthly revenue tracking.
+/// 
+/// Used in the revenue chart to display income trends
+/// over the last 6 months.
 class RevenueData {
+  /// Month abbreviation (e.g., 'Jan', 'Feb', 'Mar')
   final String month;
+  
+  /// Total revenue earned in this month
   final double revenue;
 
   RevenueData(this.month, this.revenue);
 }
 
+/// Data model for task category distribution.
+/// 
+/// Used in the pie chart to display the percentage breakdown
+/// of tasks across different categories.
 class CategoryData {
+  /// Task category name (e.g., 'Delivery', 'Cleaning', 'Other')
   final String category;
+  
+  /// Percentage of tasks in this category (0-100)
   final double percentage;
+  
+  /// Color for this category in the pie chart
   final Color color;
 
   CategoryData(this.category, this.percentage, this.color);
 }
 
+/// Data model for combined monthly task and revenue trends.
+/// 
+/// Used in the monthly trends chart to show both task count
+/// and revenue side-by-side for comparison.
 class MonthlyData {
+  /// Month abbreviation (e.g., 'Jan', 'Feb', 'Mar')
   final String month;
+  
+  /// Number of tasks in this month
   final int tasks;
+  
+  /// Total revenue earned in this month
   final double revenue;
 
   MonthlyData(this.month, this.tasks, this.revenue);
