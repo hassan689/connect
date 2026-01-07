@@ -2,9 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:connect/ai_services/huggingface_service.dart';
 
+/// Widget for AI-powered task description enhancement.
+/// 
+/// Provides a UI component that allows users to automatically enhance
+/// their task descriptions using AI. Features include:
+/// - Automatic task categorization using machine learning
+/// - Enhanced description generation with category metadata
+/// - Real-time feedback and loading states
+/// - Callback functions to update parent widgets
+/// 
+/// This widget integrates with HuggingFaceService to provide intelligent
+/// task description improvements and category suggestions.
 class AITaskEnhancer extends StatefulWidget {
+  /// The initial task description to enhance.
   final String initialDescription;
+  
+  /// Callback invoked when the description is enhanced by AI.
+  /// 
+  /// Receives the enhanced description as a parameter.
   final Function(String) onDescriptionChanged;
+  
+  /// Callback invoked when AI suggests a task category.
+  /// 
+  /// Receives the suggested category name as a parameter.
   final Function(String) onCategoryChanged;
 
   const AITaskEnhancer({
@@ -31,6 +51,14 @@ class _AITaskEnhancerState extends State<AITaskEnhancer> {
     _enhancedDescription = widget.initialDescription;
   }
 
+  /// Enhances the task description using AI services.
+  /// 
+  /// Calls HuggingFaceService to:
+  /// 1. Generate an enhanced version of the description
+  /// 2. Classify the task into an appropriate category
+  /// 
+  /// Updates the UI with results and invokes parent callbacks.
+  /// Shows appropriate error messages if AI enhancement fails.
   Future<void> _enhanceDescription() async {
     if (_currentDescription.trim().isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
