@@ -7,6 +7,7 @@ import 'package:connect/firebase/fb.dart';
 import 'package:connect/signuppage/signuppage.dart';
 import 'package:connect/profilepage/profile_check_wrapper.dart';
 import 'package:connect/core/utils/responsive.dart';
+import 'package:connect/config/app_config.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -448,12 +449,12 @@ class _LoginPageState extends State<LoginPage> {
                 try {
                   await user.sendEmailVerification(
                     ActionCodeSettings(
-                      url: 'https://YOUR_PROJECT_ID.firebaseapp.com/__/auth/action',
+                      url: AppConfig.firebaseAuthActionUrl,
                       handleCodeInApp: true,
-                      androidPackageName: 'com.example.connect',
+                      androidPackageName: AppConfig.appPackageName,
                       androidInstallApp: true,
                       androidMinimumVersion: '12',
-                      iOSBundleId: 'com.example.connect',
+                      iOSBundleId: AppConfig.firebaseIosBundleId,
                     ),
                   );
                   if (context.mounted) {
