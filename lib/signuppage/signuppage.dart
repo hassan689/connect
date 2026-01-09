@@ -9,6 +9,7 @@ import 'package:connect/firebase/fb.dart';
 import 'package:connect/profilepage/complete_profile_screen.dart';
 import 'package:connect/menupage/mainp.dart';
 import 'package:connect/loginpage/loginp.dart'; // Added import for LoginPage
+import 'package:connect/config/app_config.dart';
 import 'dart:async'; // Added for Timer
 
 class SignupPage extends StatefulWidget {
@@ -775,12 +776,12 @@ class _SignupPageState extends State<SignupPage> {
                 try {
                   await user.sendEmailVerification(
                     ActionCodeSettings(
-                      url: 'https://YOUR_PROJECT_ID.firebaseapp.com/__/auth/action',
+                      url: AppConfig.firebaseAuthActionUrl,
                       handleCodeInApp: true,
-                      androidPackageName: 'com.example.connect',
+                      androidPackageName: AppConfig.appPackageName,
                       androidInstallApp: true,
                       androidMinimumVersion: '12',
-                      iOSBundleId: 'com.example.connect',
+                      iOSBundleId: AppConfig.firebaseIosBundleId,
                     ),
                   );
                   Navigator.of(context).pop();
@@ -904,12 +905,12 @@ class _SignupPageState extends State<SignupPage> {
                 try {
                   await user.sendEmailVerification(
                     ActionCodeSettings(
-                      url: 'https://YOUR_PROJECT_ID.firebaseapp.com/__/auth/action',
+                      url: AppConfig.firebaseAuthActionUrl,
                       handleCodeInApp: true,
-                      androidPackageName: 'com.example.connect',
+                      androidPackageName: AppConfig.appPackageName,
                       androidInstallApp: true,
                       androidMinimumVersion: '12',
-                      iOSBundleId: 'com.example.connect',
+                      iOSBundleId: AppConfig.firebaseIosBundleId,
                     ),
                   );
                   Navigator.of(context).pop();

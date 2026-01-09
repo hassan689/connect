@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:connect/config/app_config.dart';
+import 'package:connect/services/points_service.dart';
 
 /// Service class for handling AI-powered chat interactions with Dino agent.
 /// 
@@ -115,7 +116,9 @@ Always be encouraging and help users get the most out of Connect!
     } else if (lowerMessage.contains('find') || lowerMessage.contains('search') || lowerMessage.contains('browse')) {
       return 'To find tasks:\n\n1️⃣ Go to the "Browse" tab\n2️⃣ Use filters to narrow down tasks\n3️⃣ Tap on a task to see details\n4️⃣ Make an offer if interested!\n\nYou can also use the map view to see tasks near you! 📍';
     } else if (lowerMessage.contains('payment') || lowerMessage.contains('pay') || lowerMessage.contains('money')) {
-      return 'We use a point-based system for payments! ⭐\n\n• Earn points by completing tasks\n• Use points to post and pay for tasks\n• Platform takes 10% commission\n• Service providers receive 90% of points\n\nNeed help understanding the points system?';
+      final platformCommissionRate = PointsService.platformCommissionRate;
+      final providerPayoutRate = PointsService.providerPayoutRate;
+      return 'We use a point-based system for payments! ⭐\n\n• Earn points by completing tasks\n• Use points to post and pay for tasks\n• Platform takes ${(platformCommissionRate * 100).toStringAsFixed(0)}% commission\n• Service providers receive ${(providerPayoutRate * 100).toStringAsFixed(0)}% of points\n\nNeed help understanding the points system?';
     } else if (lowerMessage.contains('help') || lowerMessage.contains('support')) {
       return 'I\'m here to help! Here are some common topics:\n\n📝 How to post tasks\n🔍 How to find tasks\n💳 Payment setup\n📍 Location services\n📱 App features\n\nWhat would you like to know more about?';
     } else if (lowerMessage.contains('feature') || lowerMessage.contains('what can') || lowerMessage.contains('do')) {
@@ -123,7 +126,8 @@ Always be encouraging and help users get the most out of Connect!
     } else if (lowerMessage.contains('thank') || lowerMessage.contains('thanks')) {
       return 'You\'re welcome! I\'m always here to help. Don\'t hesitate to ask if you need anything else! 🦕✨';
     } else if (lowerMessage.contains('earn') || lowerMessage.contains('money') || lowerMessage.contains('work')) {
-      return 'Want to earn points? Here\'s how:\n\n⭐ Browse available tasks in your area\n💼 Make competitive offers\n✅ Complete tasks professionally\n💰 Earn points (90% of task value)\n⭐ Build your reputation\n\nStart by checking the Browse tab! 🚀';
+      final providerPayoutRate = PointsService.providerPayoutRate;
+      return 'Want to earn points? Here\'s how:\n\n⭐ Browse available tasks in your area\n💼 Make competitive offers\n✅ Complete tasks professionally\n💰 Earn points (${(providerPayoutRate * 100).toStringAsFixed(0)}% of task value)\n⭐ Build your reputation\n\nStart by checking the Browse tab! 🚀';
     } else if (lowerMessage.contains('safety') || lowerMessage.contains('secure') || lowerMessage.contains('trust')) {
       return 'Your safety is our priority! 🔒\n\n• All users are verified\n• Secure payment system\n• Real-time tracking\n• User ratings and reviews\n• 24/7 support available\n\nFeel free to ask about any safety concerns!';
     } else {

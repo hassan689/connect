@@ -375,14 +375,17 @@ class _PaymentSettingsScreenState extends State<PaymentSettingsScreen> {
   }
 
   void _showAddPointsDialog() {
+    final providerPayoutRate = PointsService.providerPayoutRate;
+    final platformCommissionRate = PointsService.platformCommissionRate;
+    
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
         title: Text('Earn Points', style: GoogleFonts.poppins()),
         content: Text(
           'Complete tasks as a service provider to earn points!\n\n'
-          '• Complete a task: Earn 90% of task points\n'
-          '• Platform commission: 10%\n\n'
+          '• Complete a task: Earn ${(providerPayoutRate * 100).toStringAsFixed(0)}% of task points\n'
+          '• Platform commission: ${(platformCommissionRate * 100).toStringAsFixed(0)}%\n\n'
           'Points can be used to post tasks and pay for services.',
           style: GoogleFonts.poppins(),
         ),
@@ -397,6 +400,9 @@ class _PaymentSettingsScreenState extends State<PaymentSettingsScreen> {
   }
 
   void _showPointsInfoDialog() {
+    final providerPayoutRate = PointsService.providerPayoutRate;
+    final platformCommissionRate = PointsService.platformCommissionRate;
+    
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -407,8 +413,8 @@ class _PaymentSettingsScreenState extends State<PaymentSettingsScreen> {
             '✓ Points are used instead of money\n'
             '✓ Earn points by completing tasks\n'
             '✓ Use points to post and pay for tasks\n'
-            '✓ Platform takes 10% commission\n'
-            '✓ Service providers receive 90% of points\n\n'
+            '✓ Platform takes ${(platformCommissionRate * 100).toStringAsFixed(0)}% commission\n'
+            '✓ Service providers receive ${(providerPayoutRate * 100).toStringAsFixed(0)}% of points\n\n'
             'This is a point-based economy system for the Connect platform.',
             style: GoogleFonts.poppins(),
           ),

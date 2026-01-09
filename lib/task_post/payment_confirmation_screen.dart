@@ -31,8 +31,14 @@ class _PaymentConfirmationScreenState extends State<PaymentConfirmationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final platformCommission = widget.taskAmount * 0.10;
-    final providerPayout = widget.taskAmount * 0.90;
+    // Use configured commission rates from PointsService
+    final commissionCalculation = PointsService.calculateCommission(widget.taskAmount);
+    final platformCommission = commissionCalculation['platformCommission']!;
+    final providerPayout = commissionCalculation['providerPayout']!;
+    
+    // Get percentage rates for display
+    final platformCommissionRate = PointsService.platformCommissionRate;
+    final providerPayoutRate = PointsService.providerPayoutRate;
 
     return Scaffold(
       appBar: AppBar(
@@ -127,14 +133,14 @@ class _PaymentConfirmationScreenState extends State<PaymentConfirmationScreen> {
                     ),
                     const Divider(),
                     _buildPaymentRow(
-                      'Platform Commission (10%)',
+                      'Platform Commission (${(platformCommissionRate * 100).toStringAsFixed(0)}%)',
                       '-${platformCommission.toStringAsFixed(0)} Points',
                       isTotal: false,
                       color: Colors.orange,
                     ),
                     const SizedBox(height: 8),
                     _buildPaymentRow(
-                      'Provider Payout (90%)',
+                      'Provider Payout (${(providerPayoutRate * 100).toStringAsFixed(0)}%)',
                       '${providerPayout.toStringAsFixed(0)} Points',
                       isTotal: false,
                       color: Colors.green,
@@ -244,8 +250,8 @@ class _PaymentConfirmationScreenState extends State<PaymentConfirmationScreen> {
                         Text(
                           '• Ensure you have sufficient points in your account\n'
                           '• Points will be deducted immediately\n'
-                          '• Provider will receive 90% of the points\n'
-                          '• Platform commission is 10%',
+                          '• Provider will receive ${(providerPayoutRate * 100).toStringAsFixed(0)}% of the points\n'
+                          '• Platform commission is ${(platformCommissionRate * 100).toStringAsFixed(0)}%',
                           style: GoogleFonts.poppins(
                             fontSize: 12,
                             color: Colors.orange[800],

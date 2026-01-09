@@ -124,6 +124,21 @@ class AppConfig {
   static String get firebaseMacosBundleId => 
       _getEnv('FIREBASE_MACOS_BUNDLE_ID', 'com.example.connect');
 
+  // Firebase Auth Action URL
+  /// Generate Firebase auth action URL for email verification
+  /// Uses the configured Firebase project ID or defaults to firebaseAuthDomain
+  static String get firebaseAuthActionUrl {
+    final projectId = firebaseProjectId;
+    if (projectId.isNotEmpty) {
+      return 'https://$projectId.firebaseapp.com/__/auth/action';
+    }
+    // Fallback to auth domain if available
+    if (firebaseAuthDomain.isNotEmpty) {
+      return 'https://$firebaseAuthDomain/__/auth/action';
+    }
+    return 'https://YOUR_PROJECT_ID.firebaseapp.com/__/auth/action';
+  }
+
   // ============================================================================
   // GOOGLE MAPS CONFIGURATION
   // ============================================================================

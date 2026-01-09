@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:connect/config/app_config.dart';
 
 class FirebaseAuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -21,12 +22,12 @@ class FirebaseAuthService {
         try {
           await credential.user!.sendEmailVerification(
             ActionCodeSettings(
-              url: 'https://YOUR_PROJECT_ID.firebaseapp.com/__/auth/action',
+              url: AppConfig.firebaseAuthActionUrl,
               handleCodeInApp: true,
-              androidPackageName: 'com.example.connect',
+              androidPackageName: AppConfig.appPackageName,
               androidInstallApp: true,
               androidMinimumVersion: '12',
-              iOSBundleId: 'com.example.connect',
+              iOSBundleId: AppConfig.firebaseIosBundleId,
             ),
           );
           print("Email verification sent successfully to: $email");
@@ -136,12 +137,12 @@ class FirebaseAuthService {
         try {
           await user.sendEmailVerification(
             ActionCodeSettings(
-              url: 'https://YOUR_PROJECT_ID.firebaseapp.com/__/auth/action',
+              url: AppConfig.firebaseAuthActionUrl,
               handleCodeInApp: true,
-              androidPackageName: 'com.example.connect',
+              androidPackageName: AppConfig.appPackageName,
               androidInstallApp: true,
               androidMinimumVersion: '12',
-              iOSBundleId: 'com.example.connect',
+              iOSBundleId: AppConfig.firebaseIosBundleId,
             ),
           );
           print("Email verification resent successfully to: ${user.email}");
