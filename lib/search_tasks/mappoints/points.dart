@@ -38,7 +38,9 @@ class _TaskMapScreenState extends State<TaskMapScreen> {
   BitmapDescriptor? _customMarkerIcon;
   BitmapDescriptor? _nearMarkerIcon;
   BitmapDescriptor? _farMarkerIcon;
-  static const double _nearDistanceThreshold = 5000; // 5km threshold
+  
+  // Get near distance threshold from configuration (in meters)
+  double get _nearDistanceThreshold => AppConfig.nearDistanceThreshold;
   
   // Route-related variables
   bool _isRouteLoading = false;
