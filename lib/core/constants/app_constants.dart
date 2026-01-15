@@ -1,3 +1,5 @@
+import 'package:connect/config/app_config.dart';
+
 /// App-wide constants
 class AppConstants {
   AppConstants._();
@@ -5,14 +7,17 @@ class AppConstants {
   static const String appName = 'Connect';
   static const String appTitle = 'Connect';
 
-  static const String notificationChannelId = 'high_importance_channel';
-  static const String notificationChannelName = 'High Importance Notifications';
-  static const String notificationChannelDescription =
-      'This channel is used for important notifications.';
+  /// Notification channel configuration loaded from AppConfig
+  static String get notificationChannelId => AppConfig.notificationChannelId;
+  static String get notificationChannelName => AppConfig.notificationChannelName;
+  static String get notificationChannelDescription => AppConfig.notificationChannelDescription;
 
-  static const int ledOnMs = 1000;
-  static const int ledOffMs = 500;
-  static const String notificationIcon = '@mipmap/ic_launcher';
+  /// LED timing configuration loaded from AppConfig (in milliseconds)
+  static int get ledOnMs => AppConfig.ledOnMs;
+  static int get ledOffMs => AppConfig.ledOffMs;
+  
+  /// Notification icon loaded from AppConfig
+  static String get notificationIcon => AppConfig.notificationIcon;
 
   static const String envFileName = '.env';
 }

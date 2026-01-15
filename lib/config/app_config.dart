@@ -210,4 +210,56 @@ class AppConfig {
       return 0.90;
     }
   }
+
+  // ============================================================================
+  // NOTIFICATION CONFIGURATION
+  // ============================================================================
+  
+  /// Notification Channel ID
+  static String get notificationChannelId => 
+      _getEnv('NOTIFICATION_CHANNEL_ID', 'high_importance_channel');
+  
+  /// Notification Channel Name
+  static String get notificationChannelName => 
+      _getEnv('NOTIFICATION_CHANNEL_NAME', 'High Importance Notifications');
+  
+  /// Notification Channel Description
+  static String get notificationChannelDescription => 
+      _getEnv('NOTIFICATION_CHANNEL_DESCRIPTION', 'This channel is used for important notifications.');
+  
+  /// LED On Duration in milliseconds
+  static int get ledOnMs {
+    try {
+      return int.tryParse(_getEnv('LED_ON_MS', '1000')) ?? 1000;
+    } catch (e) {
+      return 1000;
+    }
+  }
+  
+  /// LED Off Duration in milliseconds
+  static int get ledOffMs {
+    try {
+      return int.tryParse(_getEnv('LED_OFF_MS', '500')) ?? 500;
+    } catch (e) {
+      return 500;
+    }
+  }
+  
+  /// Notification Icon
+  static String get notificationIcon => 
+      _getEnv('NOTIFICATION_ICON', '@mipmap/ic_launcher');
+
+  // ============================================================================
+  // MAP CONFIGURATION
+  // ============================================================================
+  
+  /// Near Distance Threshold in meters (e.g., 5000 for 5km)
+  /// Used to determine if a task location is considered "near" the user
+  static double get nearDistanceThreshold {
+    try {
+      return double.tryParse(_getEnv('NEAR_DISTANCE_THRESHOLD', '5000')) ?? 5000;
+    } catch (e) {
+      return 5000;
+    }
+  }
 }
