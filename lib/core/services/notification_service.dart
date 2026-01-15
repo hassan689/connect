@@ -18,7 +18,7 @@ class NotificationService {
     if (kIsWeb) return;
 
     try {
-      const channel = AndroidNotificationChannel(
+      final channel = AndroidNotificationChannel(
         AppConstants.notificationChannelId,
         AppConstants.notificationChannelName,
         description: AppConstants.notificationChannelDescription,
@@ -27,7 +27,7 @@ class NotificationService {
         enableVibration: true,
       );
 
-      const androidSettings = AndroidInitializationSettings(
+      final androidSettings = AndroidInitializationSettings(
         AppConstants.notificationIcon,
       );
 
@@ -37,7 +37,7 @@ class NotificationService {
         requestSoundPermission: true,
       );
 
-      const initializationSettings = InitializationSettings(
+      final initializationSettings = InitializationSettings(
         android: androidSettings,
         iOS: iosSettings,
       );
@@ -89,7 +89,7 @@ class NotificationService {
 
   /// Get notification details for Android and iOS
   static NotificationDetails _getNotificationDetails() {
-    return const NotificationDetails(
+    return NotificationDetails(
       android: AndroidNotificationDetails(
         AppConstants.notificationChannelId,
         AppConstants.notificationChannelName,
@@ -103,7 +103,7 @@ class NotificationService {
         ledOnMs: AppConstants.ledOnMs,
         ledOffMs: AppConstants.ledOffMs,
       ),
-      iOS: DarwinNotificationDetails(
+      iOS: const DarwinNotificationDetails(
         presentAlert: true,
         presentBadge: true,
         presentSound: true,
