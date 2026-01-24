@@ -86,7 +86,24 @@ Always be encouraging and help users get the most out of Connect!
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
-        return data['choices'][0]['message']['content'];
+        
+        // We extract 'choices' safely
+        final choices = data['choices'] as List?;
+        
+        // We check if the list exists and is not empty
+        if (choices == null || choices.isEmpty) {
+          return _getSimpleResponse(userMessage);
+        }
+
+        //  We extract the first option message
+        final firstChoice = choices[0] as Map?;
+        final message = firstChoice?['message'] as Map?;
+        
+        // We extract the final content
+        final content = message?['content'] as String?;
+
+        // 5. If content is null, we use fallback
+        return content ?? _getSimpleResponse(userMessage);
       } else {
         // Fallback to simple responses if API fails
         return _getSimpleResponse(userMessage);
