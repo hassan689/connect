@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:connect/config/app_config.dart';
 import 'package:connect/services/points_service.dart';
 
@@ -164,8 +166,18 @@ Always be encouraging and help users get the most out of Connect!
   /// Example implementation would save to a 'conversations' collection
   /// in Firestore with timestamp and user context.
   static Future<void> saveConversation(String userId, String userMessage, String aiResponse) async {
-    // You can implement this to save conversations for analytics
-    // This helps improve the AI responses over time
+    try {
+      await FirebaseFirestore.instance
+          .collection('ai_conversations')
+          .add({
+            'userId': userId,
+            'userMessage': userMessage,
+            'aiResponse': aiResponse,
+            'timestamp': FieldValue.serverTimestamp(),
+          });
+    } catch (e) {
+      debugPrint('Error saving conversation: $e');
+    }
   }
 
   /// Gets a list of suggested questions users can ask Dino.
