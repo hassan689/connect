@@ -165,6 +165,12 @@ Always be encouraging and help users get the most out of Connect!
   /// 
   /// Saves to the 'ai_conversations' collection in Firestore with timestamp.
   static Future<void> saveConversation(String userId, String userMessage, String aiResponse) async {
+    // Validate input parameters
+    if (userId.isEmpty || userMessage.trim().isEmpty || aiResponse.trim().isEmpty) {
+      debugPrint('Cannot save conversation: Invalid parameters provided');
+      return;
+    }
+
     try {
       await FirebaseFirestore.instance
           .collection('ai_conversations')
@@ -175,7 +181,7 @@ Always be encouraging and help users get the most out of Connect!
             'timestamp': FieldValue.serverTimestamp(),
           });
     } catch (e) {
-      debugPrint('Error saving conversation: $e');
+      debugPrint('Failed to save conversation to Firestore: $e');
     }
   }
 
