@@ -229,14 +229,6 @@ flutter build web --release
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
 
-### Development Workflow
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
 ### Code Style
 
 We follow the [Dart Style Guide](https://dart.dev/guides/language/effective-dart/style) and use [flutter_lints](https://pub.dev/packages/flutter_lints) for code analysis.
@@ -253,16 +245,8 @@ If you need help or have questions:
 - **Issues**: Create an issue on [GitHub](https://github.com/hassan689/connect/issues)
 - **Security**: Report security issues via [SECURITY.md](SECURITY.md)
 
-## Acknowledgments
 
-- [Flutter Team](https://flutter.dev/) for the amazing framework
-- [Firebase](https://firebase.google.com/) for backend services
-- [Google Maps](https://developers.google.com/maps) for mapping services
-- [OpenAI](https://openai.com/) for AI capabilities
-- [Hugging Face](https://huggingface.co/) for AI models
-- All our contributors and users
----
-## 🤝 Community, Discord & Contributions
+##  Community, Discord & Contributions
 
 We believe in building Connect together.  
 Join our Discord server to:
